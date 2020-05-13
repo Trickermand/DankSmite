@@ -24,6 +24,8 @@ namespace DankSmite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddRazorPages();
+            //services.AddControllersWithViews();
             services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
@@ -43,6 +45,7 @@ namespace DankSmite
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRazorPages();
                 //endpoints.MapGet("/ds/Test/Text7", async context =>
                 //{
                 //    await context.Response.WriteAsync("<h1>Awilix\nSol\nYmir\nNemesis\nGeb\nKali\nApollo\n</h1>");

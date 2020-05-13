@@ -7,17 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GodAndItemManager;
 
-namespace DankSmite
+namespace DankSmite.Pages.Shared
 {
     public class MyIndexModel : PageModel
     {
-        public List<God> Gods { get; private set; }
-
+        public static List<God> AllGods { get; private set; } = SmiteGamepediaApi.GetAllGods();
+        public Models.CurrentGodModel CurrentGodModel { get; set; } = new Models.CurrentGodModel();
         public MyIndexModel()
         {
-            Gods = SmiteGamepediaApi.GetAllGods();
-
+            God god = GetGod();
+            CurrentGodModel.GodName = god.Name;
+            CurrentGodModel.BootsItem = DateTime.Now.ToString("HH:mm:ss");
+            CurrentGodModel.StarterItem = DateTime.Now.AddHours(4).ToString("HH:mm:ss");
         }
+
+        private God GetGod()
+        {
+            return AllGods[new Random().Next(0, AllGods.Count)];
+        }
+
+
 
         public void OnGet()
         {

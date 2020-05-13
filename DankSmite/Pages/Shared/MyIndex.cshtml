@@ -1,17 +1,39 @@
-﻿@model DankSmite.MyIndexModel
+﻿@model DankSmite.Pages.Shared.MyIndexModel
 @{
     string s = DateTime.Now.ToString("yyyy-MM-dd") + " Nazzyc";
-    List<GodAndItemManager.God> gods = Model.Gods;
+    List<GodAndItemManager.God> gods = DankSmite.Pages.Shared.MyIndexModel.AllGods;
+    DankSmite.Models.CurrentGodModel currentGod = Model.CurrentGodModel;
+
 }
-<h1>Hello World!</h1>
 
-
-@for (int i = 0; i < gods.Count; i++)
-{
-<div>
-    <p>@gods[i].Name.PadRight(30, '_')<img src="@gods[i].Picture" style="width: 50px;" /></p>
+<!--Main Frame-->
+<div id="Main window" style="margin-left: 15%; margin-right: 15%; margin-top:5%; background-color:orangered">
+    <!--GODS Section-->
+    <div id="Gods">
+        <div style="background-color:lawngreen; margin-top: 5%; margin-left: 80%; width:75px; height:75px">
+            <div>
+                @using (Html.BeginForm())
+                {
+                    <input type="submit" value="Refresh"><input/>
+                }
+            </div>
+            <div>
+                @*<img src="@gods[0].Picture" style="width: 50px;" />*@
+            </div>
+            <div style="position:center">
+                <label>@currentGod.GodName</label>
+                <label>@currentGod.BootsItem</label>
+                <label>@currentGod.StarterItem</label>
+            </div>
+        </div>
+    </div>
+    <!--ITEMS Section-->
+    <div id="Items">
+        <div id="Starter Item">
+            <img src="https://gamepedia.cursecdn.com/smite_gamepedia/7/70/WarriorsBlessing_T1.png?version=d1b104e5c7b601a827188952f67da16a" style="width: 50px;"/>
+        </div>
+        <div id="Boots">
+            <img src="https://gamepedia.cursecdn.com/smite_gamepedia/2/25/M_Shoes_oftheMagi.png?version=9446d412c98265564c98bcd1d2df2b4b" style="width: 50px;"/>
+        </div>
+    </div>
 </div>
-}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/w_MSFkZHNi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-

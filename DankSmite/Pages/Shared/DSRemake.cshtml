@@ -1,0 +1,268 @@
+﻿@page
+@model DankSmite.Pages.Shared.DSRemakeModel
+@{
+}
+<div class="BuildButtonUpdatePanel" style="position:relative; left: 595px; top: 50px;">
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+            <Button ID="BuildButton" Text="Build!" style="background-color: teal; color:lightblue;font-weight:700; height: 70px; width: 200px; opacity:1; font-size: 35px;" onclick="BuildButton_Click"></Button>
+            <div style="position:relative;">
+                <asp:TextBox ID="InputField" runat="server"></asp:TextBox>
+            </div>
+            <!--<input type="text" id="InputField" style="position:relative; left:30px; bottom: 25px;" />-->
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+<div class="DropDownListUpdatePanel" style="position:relative; left:595px; top:60px;">
+    <div>
+        <asp:Label runat="server">Map</asp:Label>
+    </div>
+    <asp:dropdownlist id="MapSelectionList">
+        <asp:listitem text="Conquest" value="1"></asp:listitem>
+        <asp:listitem text="Joust" value="2"></asp:listitem>
+        <asp:listitem text="Arena" value="3"></asp:listitem>
+        <asp:listitem text="Clash" value="4"></asp:listitem>
+        <asp:listitem text="Assault" value="5"></asp:listitem>
+        <asp:listitem text="Siege" value="6"></asp:listitem>
+    </asp:dropdownlist>
+</div>
+
+   <!-- Checkbox section -->
+<div class="ChekcboxUpdatePanel" style="position:relative; left: 595px; top: 120px; background-color:blue">
+    <asp:UpdatePanel ID="UpdatePanel3">
+        <ContentTemplate>
+            <div style="position:absolute; left: 50px; font-size: 20px; font-weight:400; font-size:18px">
+                <label class="CheckboxHeaderLabel">Magical</label>
+                <label class="CheckboxText" style="position:absolute; top:30px; left:15px;">
+                    <asp:CheckBox ID="GuardianCheckbox" Checked="true" style="position:absolute; left: -15px;" /> Guardian
+                </label>
+                <label class="CheckboxText" style="position:absolute; top:50px; left:15px;">
+                    <asp:CheckBox ID="MageCheckbox" Checked="true" style="position:absolute; left: -15px;" /> Mage
+                </label>
+            </div>
+
+            <div style="position:absolute; left: 200px; font-weight:400; font-size:18px" ">
+                <label class="CheckboxHeaderLabel">Physical</label>
+                <label class="CheckboxText" style="position:absolute; top:30px; left:15px;">
+                    <asp:CheckBox ID="HunterCheckbox" Checked="true" style="position:absolute; left: -15px;" />Hunter
+                </label>
+                <label class="CheckboxText" style="position:absolute; top:50px; left:15px;">
+                    <asp:CheckBox ID="AssassinCheckbox" Checked="true" style="position:absolute; left: -15px;" />Assassin
+                </label>
+                <label class="CheckboxText" style="position:absolute; top:70px; left:15px;">
+                    <asp:CheckBox ID="WarriorCheckbox" Checked="true" style="position:absolute; left: -15px;" />Warrior
+                </label>
+            </div>
+
+            <div style="position:absolute; left: 350px; font-weight:400; font-size:18px">
+                <label class="CheckboxHeaderLabel">Item Type</label>
+                <label class="CheckboxText" style="position:absolute; top:30px; left:15px;">
+                    <asp:CheckBox ID="DamageCheckbox" Checked="true" style="position:absolute; left: -15px;" />Damage
+                </label>
+                <label class="CheckboxText" style="position:absolute; top:50px; left:15px;">
+                    <asp:CheckBox ID="HybridCheckbox" Checked="true" style="position:absolute; left: -15px;" />Hybrid
+                </label>
+                <label class="CheckboxText" style="position:absolute; top:70px; left:15px;">
+                    <asp:CheckBox ID="DefenseCheckbox" Checked="true" style="position:absolute; left: -15px;" />Defense
+                </label>
+            </div>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+
+<div class="ItemUpdatePanel">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <!-- ================================= Items ================================== -->
+            <div style="position: initial; left: 0px; top: 0px; height: 250px; width: 600px">
+
+                <div style="position: absolute; left:150px; top:0px; ">
+                    <asp:Label ID="CurrentItemNameLabel" Text="" Font-Size="34px"></asp:Label>
+                </div>
+
+                <div style="position: absolute; left: 10px; top:172px;">
+                    <Label class="ItemLabel">Relic 1</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top: 0;">
+                            <asp:Image ID="RelicPicture1" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="RelicFrame1" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="RelicPicture1_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 117px; top:172px;">
+                    <%--                        <div class="ItemLabel">
+                        <Label class="ItemLabel">Relic 2</Label>
+                    </div>--%>
+                    <Label class="ItemLabel">Relic 2</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="RelicPicture2" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="RelicFrame2" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="RelicPicture2_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 61px; top:30px;">
+                    <Label class="ItemLabel">Starter</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="StarterItemPicture" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="StarterItemFrame" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="StarterItemPicture_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left:242px; top:30px; ">
+                    <Label class="ItemLabel">Item 1</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture1" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;" onmouseover="pictureBox1_Hover">
+                            <asp:ImageButton ID="ItemFrame1" ImageUrl="~/Resources/ItemFrameNeutral.png" OnClick="ItemPicture1_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 349px; top:30px; ">
+                    <Label class="ItemLabel">Item 2</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture2" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="ItemFrame2" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="ItemPicture2_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 456px; top:30px;">
+                    <Label class="ItemLabel">Item 3</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture3" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="ItemFrame3" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="ItemPicture3_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 242px; top:172px;">
+                    <Label class="ItemLabel">Item 4</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture4" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="ItemFrame4" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="ItemPicture4_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 349px; top:172px;">
+                    <Label class="ItemLabel">Item 5</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture5" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="ItemFrame5" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="ItemPicture5_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: absolute; left: 456px; top:172px;">
+                    <Label class="ItemLabel">Item 6</Label>
+
+                    <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:Image ID="ItemPicture6" ImageUrl="~/Resources/ichaival.png" />
+                        </div>
+                        <div style="position: absolute; left: 0; top:0;">
+                            <asp:ImageButton ID="ItemFrame6" ImageUrl="~/Resources/ItemFrameDamage.png" OnClick="ItemPicture6_Click" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========================================================================== -->
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+<div class="GodUpdatePanel" style="position:absolute; left:420px; top:150px;">
+    <asp:UpdatePanel ID="GodUpdatePanel" runat="server">
+        <ContentTemplate>
+            <!-- ================================= God ==================================== -->
+            <div style="position:relative; left:150px; top:70px;">
+                <asp:Label ID="GodLabel" Text="Agni" Font-Size="34px"></asp:Label>
+            </div>
+            <div style="position: absolute; left:0; top:0;">
+
+                <div style="position:absolute; height: 92px; width: 92px; top:30px">
+                    <div style="position: absolute; left: 0; top:0;">
+                        <asp:Image ID="GodPicture" ImageUrl="~/Resources/agni.png" />
+                    </div>
+                    <div style="position: absolute; left: 0; top:0;">
+                        <asp:ImageButton ID="GodFrame" ImageUrl="~/Resources/DankFrameBlue.png" OnClick="GodPicture_Click" />
+                    </div>
+                </div>
+            </div>
+            <!-- ========================================================================== -->
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+<div class="GeneralTextBoxPanel" style="position: absolute; left:420px; top:350px; width: 350px; background-color:grey">
+    <asp:UpdatePanel ID="GeneralTextBoxPanel" runat="server">
+        <ContentTemplate>
+
+            <asp:Label ID="GeneralTextBox" Text="Default" Font-Size="20px" ForeColor="#ff9900" />
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+<div class="RerollUpdatePanel" style="position:absolute;top:560px; left:420px;">
+    <asp:UpdatePanel ID="RerollUpdatePanel" runat="server">
+        <ContentTemplate>
+            <label class="RerollPanel">Rerolls</label>
+            <asp:Label ID="RerollNumber" Text="0" Font-Size="35px" ForeColor="LightBlue" />
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
+
+<div class="ButtonPanel" style="position:absolute; top:635px; left:310px;">
+    <asp:UpdatePanel ID="ButtonPanel" runat="server">
+        <ContentTemplate>
+            <asp:Button ID="CreditsButton" Text="Credits" OnClick="CreditsButon_Click" />
+            <br />
+            <br />
+            <asp:Button ID="Button1" Text="Welcome!" OnClick="WelcomeButton_Click" />
+            <br />
+            <br />
+            <asp:Button ID="DisclaimerButton" Text="Disclaimer" OnClick="DisclaimerButton_Click" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</div>
